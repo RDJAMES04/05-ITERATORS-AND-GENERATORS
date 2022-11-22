@@ -1,20 +1,22 @@
 function createIteratable(count) {
-  let value = 0
-  let n1 = 0; let n2 = 1; let nextTerm
+  let index = 0
+  let n1 = 0
+  let n2 = 1
+  let nextTerm
   return {
     [Symbol.iterator]() {
       return {
         next() {
           let result
-          if (value < count) {
+          if (index < count) {
             result = { value: n1, done: false }
             nextTerm = n1 + n2
             n1 = n2
             n2 = nextTerm
-            value += 1
+            index += 1
             return result
           }
-          return { value, done: true }
+          return { value: index, done: true }
         },
       }
     },
